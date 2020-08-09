@@ -1,9 +1,7 @@
 const express = require('express')
 const morgan = require('morgan')
 const helmet = require('helmet')
-const chalk = require('chalk')
-const log = console.log
-
+const { terminal } = require('../utils/console.js')
 require('dotenv').config()
 
 const middlewares = require('./middlewares')
@@ -15,7 +13,7 @@ app.use(morgan('dev'))
 app.use(helmet())
 
 app.get('/', (req, res) => {
-  log(chalk.blue('Hello') + ' World' + chalk.red('!'))
+  terminal({ message: 'success', code: 200 })
   res.json({
     message: '🦄🌈✨👋🌎🌍🌏✨🌈🦄',
   })
