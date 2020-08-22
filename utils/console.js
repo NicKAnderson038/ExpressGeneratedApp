@@ -12,6 +12,17 @@ const table = cTable.getTable([
   },
 ])
 
+// console.table wont function correctly with chalk. However, the console.table npm library works.
+console.table([
+  {
+    name: 'foo',
+    age: 10,
+  },
+  {
+    name: 'bar',
+    age: 20,
+  },
+])
 module.exports.terminal = ({ message, code }) => {
   log(chalk.blue('Hello') + ' World' + chalk.red('!\n'))
   log(chalk.yellow(table))
