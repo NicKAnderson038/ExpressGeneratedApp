@@ -15,8 +15,8 @@ app.use(helmet())
 app.use(cors())
 app.use(express.json())
 
+terminal({ message: 'success', code: 200 })
 app.get('/', (req, res) => {
-  terminal({ message: 'success', code: 200 })
   res.json({
     message: '🦄🌈✨👋🌎🌍🌏✨🌈🦄',
   })

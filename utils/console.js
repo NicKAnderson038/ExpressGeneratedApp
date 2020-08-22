@@ -1,8 +1,20 @@
 const chalk = require('chalk')
+const cTable = require('console.table')
 const log = console.log
+const table = cTable.getTable([
+  {
+    name: 'foo',
+    age: 10,
+  },
+  {
+    name: 'bar',
+    age: 20,
+  },
+])
 
 module.exports.terminal = ({ message, code }) => {
-  log(chalk.blue('Hello') + ' World' + chalk.red('!'))
+  log(chalk.blue('Hello') + ' World' + chalk.red('!\n'))
+  log(chalk.yellow(table))
   // Compose multiple styles using the chainable API
   if (code === 400) {
     log(chalk.yellow.bgRed.bold(message))
