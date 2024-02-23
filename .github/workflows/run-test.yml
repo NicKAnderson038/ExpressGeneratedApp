@@ -12,7 +12,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  # run test
   run-test:
     runs-on: ubuntu-latest
 
@@ -22,7 +21,7 @@ jobs:
         run: |
           echo "$(cat ./package.json)" | jq .engines.node | xargs -I {} echo "NodeVersion="{} >> $GITHUB_ENV
       - name: Use Node.js ${{ env.NodeVersion }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NodeVersion }}
       - run: npm ci
