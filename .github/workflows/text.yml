@@ -1,0 +1,32 @@
+name: Github action example
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  # run test
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Hello world action
+        run: echo "Hello world!"
+        shell: bash
+    #     with:
+    #       node-version: 18
+    #   - name: Npm Install
+    #     run: npm ci
+
+  goodbye:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Goodbye world action
+        run: echo "Goodbye world!"
+        shell: bash
