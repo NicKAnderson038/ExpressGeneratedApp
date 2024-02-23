@@ -9,7 +9,8 @@
     "lint": "eslint --fix src",
     "lint-test": "eslint --fix test",
     "audit": "snyk test",
-    "test": "mocha -w"
+    "test-watch": "mocha -w",
+    "test-run": "mocha"
   },
   "keywords": [],
   "author": "CJ R. <cj@null.computer> (https://w3cj.now.sh)",
@@ -21,19 +22,18 @@
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^6.2.0",
-    "express": "^4.16.4",
-    "helmet": "^3.15.0",
-    "morgan": "^1.9.1"
+    "express": "^4.18.2",
+    "helmet": "^3.23.3",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "chalk": "^4.1.0",
+    "chalk": "^4.1.2",
     "console.table": "^0.10.0",
-    "eslint": "^5.12.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.14.0",
-    "mocha": "^5.2.0",
-    "nodemon": "^1.18.9",
-    "snyk": "^1.120.1",
-    "supertest": "^3.3.0"
+    "eslint": "^8.56.0",
+    "eslint-plugin-import": "^2.29.1",
+    "mocha": "^10.3.0",
+    "nodemon": "^3.1.0",
+    "snyk": "^1.1280.1",
+    "supertest": "^3.4.2"
   }
 }
