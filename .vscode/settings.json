@@ -1,4 +1,11 @@
 {
+  "vsicons.associations.files": [
+    {
+      "icon": "config",
+      "extensions": ["yml", "yaml"],
+      "formate": "svg"
+    }
+  ],
   "files.autoSave": "onFocusChange",
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
