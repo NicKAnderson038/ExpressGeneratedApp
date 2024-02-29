@@ -36,14 +36,16 @@ jobs:
             console.log(`Version: ${version}`);
             return true;
 
-      - name: Read node from package.json
-        uses: culshaw/read-package-node-version-actions@v1
-        # with:
-        #   path: '../'
-        id: package-node-version
+      - name: Read node and npm versions from package.json
+        uses: skjnldsv/read-package-engines-version-actions@v2
+        id: package-engines-versions
+
       - name: Show node version number
-        run: echo "Node version is ${{ steps.package-version.outputs.version }}"
-        # Version is 12.13.x
+        run: echo "Node version is ${{ steps.package-engines-versions.outputs.nodeVersion }}"
+
+      - name: Show npm version number
+        run: echo "Npm version is ${{ steps.package-engines-versions.outputs.npmVersion }}"
+
     # - run: npx hexo generate
     # - name: Azure Blob Storage Upload
     #   # You may pin to the exact commit or the version.
