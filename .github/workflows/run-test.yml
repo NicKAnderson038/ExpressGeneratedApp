@@ -39,10 +39,10 @@ jobs:
       - name: Read node from package.json
         uses: culshaw/read-package-node-version-actions@v1
         with:
-          path: '../package.json'
+          path: '../'
         id: package-node-version
-      - name: Show version number
-        run: echo "Version is ${{ steps.package-version.outputs.version }}"
+      - name: Show node version number
+        run: echo "Node version is ${{ steps.package-version.outputs.version }}"
         # Version is 12.13.x
     # - run: npx hexo generate
     # - name: Azure Blob Storage Upload
