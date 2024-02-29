@@ -1,5 +1,6 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+# https://github.com/github/vscode-github-actions/blob/main/.github/workflows/publish.ymlv
 name: Run test with node engine defined in package.json
 
 on:
@@ -27,6 +28,13 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run test-run
+      - name: Find package version
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const version = '${{ github.event.inputs.version }}' || require('./package.json').version;
+            console.log(`Version ${version} does not have a release`);
+            return true;
     # - run: npx hexo generate
     # - name: Azure Blob Storage Upload
     #   # You may pin to the exact commit or the version.
