@@ -33,8 +33,9 @@ jobs:
         with:
           script: |
             const version = '${{ github.event.inputs.version }}' || require('./package.json').version;
+            const engine = '${{ github.event.inputs.engines.node }}'
             console.log(`Version: ${version}`);
-            console.log(`Node engine: ${{ github.event.inputs.engines.node }} `);
+            console.log(`Node Version: ${engine}`);
             return true;
     # - run: npx hexo generate
     # - name: Azure Blob Storage Upload
