@@ -33,10 +33,17 @@ jobs:
         with:
           script: |
             const version = '${{ github.event.inputs.version }}' || require('./package.json').version;
-            const engine = '${{ github.event.inputs.engines.node }}'
             console.log(`Version: ${version}`);
-            console.log(`Node Version: ${engine}`);
             return true;
+
+      - name: Read node from package.json
+        uses: culshaw/read-package-node-version-actions@v1
+        with:
+          path: './path/to/package.json'
+        id: package-node-version
+      - name: Show version number
+        run: echo "Version is ${{ steps.package-version.outputs.version }}"
+        # Version is 12.13.x
     # - run: npx hexo generate
     # - name: Azure Blob Storage Upload
     #   # You may pin to the exact commit or the version.
