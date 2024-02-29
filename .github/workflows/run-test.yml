@@ -18,16 +18,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Get NodeJS Version from package.json
-        run: |
-          echo "$(cat ./package.json)" | jq .engines.node | xargs -I {} echo "NodeVersion="{} >> $GITHUB_ENV
-      - name: Use Node.js ${{ env.NodeVersion }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NodeVersion }}
-          cache: 'npm'
-      - run: npm ci
-      - run: npm run test-run
+      # - name: Get NodeJS Version from package.json
+      #   run: |
+      #     echo "$(cat ./package.json)" | jq .engines.node | xargs -I {} echo "NodeVersion="{} >> $GITHUB_ENV
+      # - name: Use Node.js ${{ env.NodeVersion }}
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version: ${{ env.NodeVersion }}
+      #     cache: 'npm'
+      # - run: npm ci
+      # - run: npm run test-run
       - name: Find package version
         uses: actions/github-script@v7
         with:
@@ -39,12 +39,17 @@ jobs:
       - name: Read node and npm versions from package.json
         uses: skjnldsv/read-package-engines-version-actions@v2
         id: package-engines-versions
-
       - name: Show node version number
         run: echo "Node version is ${{ steps.package-engines-versions.outputs.nodeVersion }}"
-
-      - name: Show npm version number
-        run: echo "Npm version is ${{ steps.package-engines-versions.outputs.npmVersion }}"
+      # - name: Show npm version number
+      #   run: echo "Npm version is ${{ steps.package-engines-versions.outputs.npmVersion }}"
+      - name: Use Node.js ${{ steps.package-engines-versions.outputs.nodeVersion }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ steps.package-engines-versions.outputs.nodeVersion }}
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run test-run
 
     # - run: npx hexo generate
     # - name: Azure Blob Storage Upload
