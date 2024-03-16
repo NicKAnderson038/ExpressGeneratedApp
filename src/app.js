@@ -7,6 +7,7 @@ require('dotenv').config()
 
 const middlewares = require('./middlewares')
 const api = require('./api')
+// const validateUser = require('./validateUser')
 
 const app = express()
 
@@ -23,6 +24,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/v1', api)
+// app.use('/api/protected', validateUser)
 
 app.use(middlewares.notFound)
 app.use(middlewares.errorHandler)
